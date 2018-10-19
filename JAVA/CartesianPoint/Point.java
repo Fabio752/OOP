@@ -28,7 +28,6 @@ public class Point {
         }
         public void SetY(double y_in) {
         	y_ = y_in;
-        	SetDistanceFromOrigin();
         }
         public void SetDistanceFromOrigin() {
 			distance_ = Math.sqrt(x_ * x_ + y_ * y_);
@@ -46,23 +45,9 @@ public class Point {
         	x_ = -x_;
         	y_ = -y_;
         }
-        public void TranslatePoint(Point translator_point) {
-        	x_ = x_ + translator_point.x_;
-        	y_ = y_ + translator_point.y_;
-		}
-
-		//Operators
-		public boolean GreaterThan(Point other_point){
-			return distance_ > other_point.GetDistanceFromOrigin();
-		}
-
-		public boolean SmallerThan(Point other_point){
-			return distance_ < other_point.GetDistanceFromOrigin();
-		}
-		public boolean EqualTo(Point other_point){
-			return (x_ == other_point.GetX()) && (y_ == other_point.GetY());
-		}
-		
-
+        public void TranslatePoint(Point other_point) {
+        	x_ = x_ + other_point.x_;
+        	y_ = y_ + other_point.y_;
+        }
         
 }

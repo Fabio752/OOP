@@ -35,6 +35,7 @@ public class Main {
 	    
 	    System.out.println("Perimeter always = " + String.valueOf(triangle.GetPerimeter()) + "\n");
 	    //End Test TranslateTriangle function
-	    
-	   	}
+		
+		
+	}
 }
