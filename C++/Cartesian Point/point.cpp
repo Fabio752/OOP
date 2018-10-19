@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
+
 #include "point.hpp"
 
 using namespace std;
@@ -68,4 +70,17 @@ void Point::TranslatePoint(const Point& other_point){
 }
 
 
+
+//Global function 
+int ReturnFarthestPointIndex(vector<Point> const& points_list) {
+    int return_index = 0;
+    
+    for(int i = 1; i < points_list.size(); i++)
+        
+        if(points_list[i].GetDistanceFromOrigin() > points_list[return_index].GetDistanceFromOrigin())
+            return_index = i;
+    
+    return return_index;
+    
+}
 

@@ -6,8 +6,6 @@
 
 using namespace std;
 
-int ReturnFarthestPointIndex(vector<Point> const& points_list); //global function
-
 int main(){
     //initialise time
     srand(time(NULL));
@@ -131,17 +129,4 @@ int main(){
     return 0;
 }
 
-
-//Global function declaration
-int ReturnFarthestPointIndex(vector<Point> const& points_list) {
-    int return_index = 0;
-    
-    for(int i = 1; i < points_list.size(); i++)
-        
-        if(points_list[i].GetDistanceFromOrigin() > points_list[return_index].GetDistanceFromOrigin())
-            return_index = i;
-    
-    return return_index;
-    
-}
 

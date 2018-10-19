@@ -1,3 +1,6 @@
+#include <vector>
+
+using namespace std;
 
 class Point {
     
@@ -26,3 +29,7 @@ class Point {
         void TranslatePoint(const Point& other_point);
         
 };
+
+
+//Global Function Declaration
+int ReturnFarthestPointIndex(vector<Point> const& points_list); 
