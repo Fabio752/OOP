@@ -14,5 +14,28 @@ LAB 1)
   
 LAB 2)
   Create a class Triangle with private first_corner, second_corner and third_corner Point class types.
-  Implement the following member functions:
-    
+  Add to the Point class the following member operators:
+    > operator (distance from the origin)
+    < operator (distance from the origin)
+    = operator (same coordinates).
+  
+  Add to the Point.cpp the following global functions:
+    ClosestPointIndex
+    EqualPoints
+   
+  Implement in the Triangle class the following member functions
+    Getters for corners
+    GetPerimeter
+    TranslateTriangle
+    GetArea
+  
+  Implement in the Triangle class the following operators:
+    < operator (area)
+    > operator (area)
+    = operator (area)
+  
+  Implement the global function: BiggestTriangle
+  
+  Write a main to test everything.
+
+LAB 3)
