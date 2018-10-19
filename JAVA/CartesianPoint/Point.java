@@ -2,25 +2,25 @@
 import java.lang.Math;
 
 public class Point {
-		private double x_;
-		private double y_;
-		private double distance_;
-		
-		Point(double x, double y){
-			x_ = x;
-			y_ = y;
-			distance_ = Math.sqrt(x * x + y * y);
-		}
-		
-		public double GetX() {
-			return x_;
-		}
-		public double GetY() {
-			return y_;
-		}
-		public double GetDistanceFromOrigin() {
-			return distance_;
-		}
+	private double x_;
+	private double y_;
+	private double distance_;
+
+	Point(double x, double y){
+		x_ = x;
+		y_ = y;
+		distance_ = Math.sqrt(x * x + y * y);
+	}
+
+	public double GetX() {
+		return x_;
+	}
+	public double GetY() {
+		return y_;
+	}
+	public double GetDistanceFromOrigin() {
+		return distance_;
+	}
         
         public void SetX(double x_in) {
         	x_ = x_in;
