@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 #include "point.hpp"
 
@@ -81,6 +82,25 @@ bool operator==(const Point& first_point, const Point& second_point){
 
 bool operator>(const Point& first_point, const Point& second_point){
     return first_point.GetDistanceFromOrigin() > second_point.GetDistanceFromOrigin();
+}
+
+
+//Global Functions
+int ClosestPointIndex(const vector<Point>& points_list){
+    int index_closest_point = 0;
+    
+    for(int i = 1; i < points_list.size(); i++)
+        if(points_list[i] < points_list[index_closest_point])
+            index_closest_point = i;
+    
+    return index_closest_point;
+}
+
+bool EqualPoints(const Point& first_point, const Point& second_point){
+        if(first_point == second_point)
+             return true;
+        
+    return false;
 }
 
 

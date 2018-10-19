@@ -9,9 +9,6 @@
 
 using namespace std;
 
-int ClosestPointIndex(const vector<Point>& points_list); 
-bool EqualPoints(const Point& first_point, const Point& second_point);
-int BiggestTriangle(const vector<Triangle>& triangles_list);
 
 int main(){
      //initialise time
@@ -122,29 +119,3 @@ int main(){
 }
 
 
-int ClosestPointIndex(const vector<Point>& points_list){
-    int index_closest_point = 0;
-    
-    for(int i = 1; i < points_list.size(); i++)
-        if(points_list[i] < points_list[index_closest_point])
-            index_closest_point = i;
-    
-    return index_closest_point;
-}
-
-bool EqualPoints(const Point& first_point, const Point& second_point){
-        if(first_point == second_point)
-             return true;
-        
-    return false;
-}
-
-int BiggestTriangle(const vector<Triangle>& triangles_list){
-     int index_biggest_triangle = 0;
-    
-    for(int i = 1; i < triangles_list.size(); i++)
-        if(triangles_list[i] > triangles_list[index_biggest_triangle])
-            index_biggest_triangle = i;
-    
-    return index_biggest_triangle;
-}
