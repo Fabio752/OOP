@@ -21,9 +21,9 @@ public class BiggestTriangle {
 		int index_biggest_triangle = 0;
     
 		for (int i = 0; i < triangles_list.size(); i++) {
-		  if (triangles_list.get(index_biggest_triangle).SmallerThan(triangles_list.get(i))) {
-		    index_biggest_triangle = i;
-		  }
+			if (triangles_list.get(index_biggest_triangle).SmallerThan(triangles_list.get(i))) {
+			index_biggest_triangle = i;
+			}
 		}
 
 		System.out.println("Biggest triangle in the list is number: " + String.valueOf(index_biggest_triangle));
