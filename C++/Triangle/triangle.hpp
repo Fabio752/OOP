@@ -26,3 +26,6 @@ class Triangle {
         friend bool operator==(Triangle first_triangle, Triangle second_triangle);
         friend bool operator>(Triangle first_triangle, Triangle second_triangle);
 };
+
+//Global Functions Declarations
+int BiggestTriangle(const vector<Triangle>& triangles_list);

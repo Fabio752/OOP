@@ -1,6 +1,10 @@
 #include <cmath>
+#include <vector>
 
 #include "triangle.hpp"
+
+using namespace std;
+
 
 Triangle::Triangle(Point first_corner, Point second_corner, Point third_corner){
      first_corner_ = first_corner;
@@ -51,4 +55,17 @@ bool operator==(Triangle first_triangle, Triangle second_triangle){
 
 bool operator>(Triangle first_triangle, Triangle second_triangle){
     return first_triangle.GetArea() > second_triangle.GetArea();
+}
+
+
+//Global functions
+
+int BiggestTriangle(const vector<Triangle>& triangles_list){
+     int index_biggest_triangle = 0;
+    
+    for(int i = 1; i < triangles_list.size(); i++)
+        if(triangles_list[i] > triangles_list[index_biggest_triangle])
+            index_biggest_triangle = i;
+    
+    return index_biggest_triangle;
 }

@@ -1,3 +1,6 @@
+#include <vector>
+using namespace std;
+
 
 class Point {
     private:
@@ -30,3 +33,6 @@ class Point {
         friend bool operator>(const Point& first_point, const Point& second_point);
 };
 
+//Global Functions Declarations
+int ClosestPointIndex(const vector<Point>& points_list); 
+bool EqualPoints(const Point& first_point, const Point& second_point);
