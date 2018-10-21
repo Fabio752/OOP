@@ -1,5 +1,16 @@
 import math
 
+
+#Global function
+def FarthestPoint(points_list):
+  index_farthest_point = 0
+  for index in range(0, len(points_list)):
+    if(points_list[index].GetDistanceFromOrigin() > points_list[index_farthest_point].GetDistanceFromOrigin()):
+      index_farthest_point = index
+  
+  return index_farthest_point
+
+
 class Point:
   
   def __init__(self, x, y):
@@ -40,3 +51,15 @@ class Point:
   def TranslatePoint(self, translator_point):
     self.__x += translator_point.GetX() 
     self.__y += translator_point.GetY()      
+
+  def __lt__(self, other):
+    return self.GetDistanceFromOrigin() < other.GetDistanceFromOrigin();
+  
+  def __gt__(self, other):
+    return self.GetDistanceFromOrigin() > other.GetDistanceFromOrigin();
+  
+  def __eq__(self, other):
+    return (self.GetX() == other.GetX() and self.GetY() == other.GetY())
+  
+
+
