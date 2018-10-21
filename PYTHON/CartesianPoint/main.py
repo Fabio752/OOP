@@ -1,14 +1,5 @@
 import random
-from point import Point
-
-#Return index farthest point
-def FarthestPoint(points_list):
-  index_farthest_point = 0
-  for index in range(0, len(points_list)):
-    if(points_list[index].GetDistanceFromOrigin() > points_list[index_farthest_point].GetDistanceFromOrigin()):
-      index_farthest_point = index
-  
-  return index_farthest_point
+from point import *
 
 
 def main():
@@ -43,7 +34,7 @@ def main():
   print("Lets build a list of line equations y = 'b'")
   line_eqns.append(input("Enter x value of b: "))
   
-  while(raw_input('Do you wanna add another equation? (Y/N) \n').upper()
+  while(input('Do you wanna add another equation? (Y/N) \n').upper()
  == 'Y'):
     line_eqns.append(input("Enter x value of b: "))
     
