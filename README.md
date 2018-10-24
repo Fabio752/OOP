@@ -39,3 +39,10 @@ LAB 2)
   Write a main to test everything.
 
 LAB 3)
+  Add some global functions to the class point.
+    MemberPointUnorderedSearch: perform a O(n) complexity unordered search of a given point in a list of points
+    MemberPointBinarySearch: perform a O(log(n)) complexity binary search of a given point in a list of points, given       that the list is sorted.
+    QuickSort: perform a quicksorting operation on an unordered list of points (declared partition_vector and swap_elements functions as helper functions)
+    FindPoint: perform either a Binary Search or an Unordered Search determined on if the list is sorted or not.
+    CommonPoints: Populate a passed by reference vector with the points which are in both the two lists given.
+    TestCommonPoints: test the functionality of CommonPoints by reading two txt files containing the two lists of points, generate the common_points vector and provide it as output in a output.txt file.
