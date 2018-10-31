@@ -46,3 +46,6 @@ LAB 3)
     FindPoint: perform either a Binary Search or an Unordered Search determined on if the list is sorted or not.
     CommonPoints: Populate a passed by reference vector with the points which are in both the two lists given.
     TestCommonPoints: test the functionality of CommonPoints by reading two txt files containing the two lists of points, generate the common_points vector and provide it as output in a output.txt file.
+   
+
+LAB 4) Polynomial class, use of destructor and constructors, overload operators.
