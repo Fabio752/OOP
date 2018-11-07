@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cmath>
 
@@ -6,36 +7,36 @@
 Polynomial::Polynomial(){
     coefficients_ = new double[1];
     coefficients_[0] = 0;
-    length_array_ = 1;
+    degree_ = 0;
 }
 
-Polynomial::Polynomial(const int& size_array, const double* coefficients){
-    coefficients_ = new double[size_array];
+Polynomial::Polynomial(const int& degree, const double* coefficients){
+    coefficients_ = new double[degree + 1];
     
-    length_array_ = size_array;
-    for(int i = 0; i < size_array; i++){
+    degree_ = degree;
+    for(int i = 0; i < degree + 1; i++){
         coefficients_[i] = coefficients[i];
     }
 }
 
 Polynomial::Polynomial(const Polynomial& polynomial){
-    coefficients_ = new double [polynomial.length_array_];
-    length_array_ = polynomial.length_array_; 
-    for(int i = 0; i < length_array_; i++){
+    coefficients_ = new double [polynomial.degree_ + 1];
+    degree_ = polynomial.degree_; 
+    for(int i = 0; i < degree_ + 1; i++){
         coefficients_[i] = polynomial.coefficients_[i];
     }
 }
 
 Polynomial::~Polynomial(){
-    //std::cout << "polynomial is leaving : ";
-    //DisplayPolynomial();
+    std::cout << "polynomial is leaving : ";
+    DisplayPolynomial();
     delete [] coefficients_;
 }
 
 void Polynomial::DisplayPolynomial(){
     std::cout << "polynomial = ";
-    for(int i = 0; i < length_array_; i++){
-        if(i != length_array_ - 1)
+    for(int i = 0; i < degree_ + 1; i++){
+        if(i != degree_)
             std::cout << coefficients_[i] << "x^" << i <<" + ";
         else
             std::cout << coefficients_[i] << "x^" << i; 
@@ -43,41 +44,53 @@ void Polynomial::DisplayPolynomial(){
     std::cout << std::endl;
 }
 
-double Polynomial::GetAndSetCoefficient(const int& index){
-    char answer;
-    double value = coefficients_[index];
-    std::cout << " Do you want to overwrite the value at index " << index <<"? (Y, N)" << std::endl;
-    std::cin >> answer;
-    if(answer == 'Y' || answer == 'y'){
-        double new_value;
-        std::cout << "With which value?" <<std::endl;
-        std::cin >> new_value;
-        coefficients_[index] = new_value;
-    }
+double Polynomial::At(const int& index){
+    return coefficients_[index];
+}
 
-    return value;
+void Polynomial::At(const int& index, const double& value){
+    coefficients_[index] = value;
 }
 
 double Polynomial::evaluate(const double& x_value){
     double result = 0;
-    for(int i = 0; i < length_array_; i++){
+    for(int i = 0; i < degree_ + 1; i++){
         result += coefficients_[i] * pow(x_value, i);
     }
     return result;
 }
 
+double& Polynomial::operator[](int i){
+    return coefficients_[i];
+}
+
+const double& Polynomial::operator[](int i) const{
+    return coefficients_[i];
+}
+
 Polynomial& Polynomial::operator=(const Polynomial& other_polynomial){
-    for(int i = 0; i < other_polynomial.length_array_; i++){
+    for(int i = 0; i < other_polynomial.degree_ + 1; i++){
         coefficients_[i] = other_polynomial.coefficients_[i];
     }
-    length_array_ = other_polynomial.length_array_;
+    degree_ = other_polynomial.degree_;
     return *this;
 }
 
+std::ostream& operator<<(std::ostream& os, const Polynomial& polynomial){
+    for (int i = 0; i < polynomial.degree_ + 1; i++){
+        if(i < polynomial.degree_)
+            os << polynomial.coefficients_[i] <<"x^" <<i  << " ";
+        else
+            os << polynomial.coefficients_[i] <<"x^" <<i <<"\n";
+    }
+
+    return os;
+}
+
 Polynomial operator+(const Polynomial& first_polynomial, const Polynomial& second_polynomial){
-    if(first_polynomial.length_array_ < second_polynomial.length_array_){
+    if(first_polynomial.degree_ < second_polynomial.degree_){
         Polynomial result_polynomial = second_polynomial;
-        for(int i = 0; i < first_polynomial.length_array_; i++){
+        for(int i = 0; i < first_polynomial.degree_ + 1; i++){
             result_polynomial.coefficients_[i] += first_polynomial.coefficients_[i];
         }
     
@@ -85,7 +98,7 @@ Polynomial operator+(const Polynomial& first_polynomial, const Polynomial& secon
     }
     else{
         Polynomial result_polynomial = first_polynomial;
-        for(int i = 0; i < second_polynomial.length_array_; i++){
+        for(int i = 0; i < second_polynomial.degree_ + 1; i++){
             result_polynomial.coefficients_[i] += second_polynomial.coefficients_[i];
         }
 
@@ -100,9 +113,9 @@ Polynomial operator+(const Polynomial& first_polynomial, const double& constant)
 }
 
 Polynomial operator-(const Polynomial& first_polynomial, const Polynomial& second_polynomial){
-   if(first_polynomial.length_array_ < second_polynomial.length_array_){
+   if(first_polynomial.degree_ < second_polynomial.degree_){
         Polynomial result_polynomial = second_polynomial;
-        for(int i = 0; i < second_polynomial.length_array_; i++){
+        for(int i = 0; i < second_polynomial.degree_ + 1; i++){
             result_polynomial.coefficients_[i] = first_polynomial.coefficients_[i] - second_polynomial.coefficients_[i];
         }
     
@@ -110,7 +123,7 @@ Polynomial operator-(const Polynomial& first_polynomial, const Polynomial& secon
     }
     else{
         Polynomial result_polynomial = first_polynomial;
-        for(int i = 0; i < first_polynomial.length_array_; i++){
+        for(int i = 0; i < first_polynomial.degree_ + 1; i++){
             result_polynomial.coefficients_[i] = second_polynomial.coefficients_[i] - first_polynomial.coefficients_[i];
         }
 
@@ -126,24 +139,24 @@ Polynomial operator-(const Polynomial& first_polynomial, const double& constant)
 
 
 Polynomial operator*(const Polynomial& first_polynomial, const Polynomial& second_polynomial){
-    double *new_coefficients = new double[first_polynomial.length_array_ + second_polynomial.length_array_];
-    for(int i = 0; i < first_polynomial.length_array_; i++){
-        for(int j = 0; j < second_polynomial.length_array_; j++){
+    double *new_coefficients = new double[first_polynomial.degree_ + second_polynomial.degree_ + 1];
+    for(int i = 0; i < first_polynomial.degree_ + 1; i++){
+        for(int j = 0; j < second_polynomial.degree_ + 1; j++){
            new_coefficients[i + j] += second_polynomial.coefficients_[j] * first_polynomial.coefficients_[i];
         }
     }
 
-    Polynomial result_polynomial(first_polynomial.length_array_ + second_polynomial.length_array_ - 1, new_coefficients);
+    Polynomial result_polynomial(first_polynomial.degree_ + second_polynomial.degree_, new_coefficients);
  
     return result_polynomial;
 }
 
 Polynomial operator*(const Polynomial& first_polynomial, const double& constant){
     Polynomial result_polynomial = first_polynomial;
-    std::cout <<"anubi";
 
-    for(int i = 0; i < first_polynomial.length_array_; i++){
+    for(int i = 0; i < first_polynomial.degree_ + 1; i++){
         result_polynomial.coefficients_[i] = first_polynomial.coefficients_[i] * constant;
     }    
     return result_polynomial;
 }
+

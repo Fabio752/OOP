@@ -1,4 +1,4 @@
-all: point.o polynomial.o main.o
+all: point.o polynomial.o labeled_point.o main.o
 	g++ $^ -o prog
 
 #implicit rule	

@@ -1,3 +1,6 @@
+#ifndef POINT_H
+#define POINT_H
+
 #include <vector>
 
 class Point {
@@ -43,3 +46,5 @@ int FindPoint(const Point& point, const std::vector<Point>& points_list, bool or
 void swap_elements(Point& first_point, Point& second_point);
 void CommonPoints(const std::vector<Point>& first_points_list, const std::vector<Point>& second_points_list, std::vector<Point>& common_points, bool ordered = false);
 int TestCommonPoints(char **argv);
+
+#endif
