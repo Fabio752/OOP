@@ -49,3 +49,5 @@ LAB 3)
    
 
 LAB 4) Polynomial class, use of destructor and constructors, overload operators.
+
+LAB 5) Complete Polynomial class with << operator, concatenation test, self assignment test, labeled_point class and operators.
