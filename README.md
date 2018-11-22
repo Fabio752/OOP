@@ -51,3 +51,7 @@ LAB 3)
 LAB 4) Polynomial class, use of destructor and constructors, overload operators.
 
 LAB 5) Complete Polynomial class with << operator, concatenation test, self assignment test, labeled_point class and operators.
+
+LAB 6) Inheritance and polimorphism, draw shapes (triangle and square) onto a .svg file.
+
+LAB 7) Use polimorphism and warrior abstract class to play a war game. Ninjas vs Samurais.
