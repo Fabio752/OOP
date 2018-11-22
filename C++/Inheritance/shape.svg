@@ -1,0 +1,7 @@
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">line{stroke:black;stroke-width:1;stroke-opacity:0.5;stroke-linecap:round;}</style>
+<line x1="250" x2="500" y1="500" y2="500"/>
+<line x1="500" x2="500" y1="500" y2="750"/>
+<line x1="500" x2="250" y1="750" y2="750"/>
+<line x1="250" x2="250" y1="750" y2="500"/>
+</svg>
