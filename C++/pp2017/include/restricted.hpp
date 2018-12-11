@@ -11,10 +11,15 @@ class Restricted: public Item {
         std::string super_user_;
 
     public:
-        ~Restricted();
+        //constructors
         Restricted(const std::string& code, const int& quantity, const std::string& super_user);
+        Restricted(const Restricted& restricted);
 
-        void Print(std::ostream& os) const;
+        //destructor
+        ~Restricted();
+
+        //member functions
+        std::ostream& Print(std::ostream& os) const;
 };
 
 #endif

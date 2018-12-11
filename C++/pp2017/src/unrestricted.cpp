@@ -2,16 +2,19 @@
 
 #include "../include/unrestricted.hpp"
 
-Unrestricted::~Unrestricted(){}
-
+//constructors
 Unrestricted::Unrestricted(const std::string& code, const int& quantity){ 
     code_ = code;
     quantity_ = quantity;
 }
 
+//destructor
+Unrestricted::~Unrestricted(){}
 
-void Unrestricted::Print(std::ostream& os) const{
+//member functions
+std::ostream& Unrestricted::Print(std::ostream& os) const{
     os <<code_ <<" " <<quantity_;
+    return os;
 }
 
 

@@ -10,10 +10,6 @@
 
 using namespace std;
 
-bool compare(Item* a, Item* b){
-    return (*a < *b);
-}
-
 int main(){
     list<Item*> unrestricted_item;
     list<Item*> restricted_item; 
@@ -61,38 +57,37 @@ int main(){
         }
     }
      
-    //display items
+    //display items unsorted
     cout <<"Unrestricted Items: \n";
     IterateList(unrestricted_item);
 
     cout <<"Restricted Items: \n";
     IterateList(restricted_item);
     
-    unrestricted_item.sort(compare);
-    restricted_item.sort(compare);
+    //sorting items
+    unrestricted_item.sort(Compare);
+    restricted_item.sort(Compare);
 
-    //display items
+    cout <<"\n \n AFTER SORTING: " <<endl;
+    
+    //display items sorted
     cout <<"Unrestricted Items: \n";
     IterateList(unrestricted_item);
 
     cout <<"Restricted Items: \n";
     IterateList(restricted_item);
     
+    //display smallest item in quantity
     if(*(*unrestricted_item.begin()) < *(*restricted_item.begin()))
         cout << "smallest item in quantity: " <<*(*unrestricted_item.begin()) << endl;    
     else    
         cout << "smallest item in quantity: " <<*(*restricted_item.begin()) << endl;    
     
+    
     //deleting
-    typename list<Item*>::const_iterator it;
-    for (it = unrestricted_item.begin(); it != unrestricted_item.end(); ++it){
-        delete *it;    
-    }
+    Delete(unrestricted_item);
+    Delete(restricted_item);
     
-    typename list<Item*>::const_iterator it2;
-    for (it2 = restricted_item.begin(); it2 != restricted_item.end(); ++it2){
-        delete *it2;    
-    }
-    
+
     return 0;    
 }

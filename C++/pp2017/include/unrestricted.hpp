@@ -8,10 +8,14 @@
 
 class Unrestricted: public Item {
     public:
-        ~Unrestricted();
+        //constructors
         Unrestricted(const std::string& code, const int& quantity); 
+        
+        //destructor
+        ~Unrestricted();
 
-        void Print(std::ostream& os) const;
+        //member functions
+        std::ostream& Print(std::ostream& os) const;
 };
 
 #endif
