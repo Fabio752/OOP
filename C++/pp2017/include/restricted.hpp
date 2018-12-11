@@ -13,6 +13,7 @@ class Restricted: public Item {
     public:
         ~Restricted();
         Restricted(const std::string& code, const int& quantity, const std::string& super_user);
+
         void Print(std::ostream& os) const;
 };
 

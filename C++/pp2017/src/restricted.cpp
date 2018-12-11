@@ -2,11 +2,8 @@
 #include <iostream>
 
 #include "../include/restricted.hpp"
-#include "../include/exception.hpp"
 
-Restricted::~Restricted(){
-    std::cout <<this->code_ <<" is leaving" <<std::endl;
-}
+Restricted::~Restricted(){}
 
 Restricted::Restricted(const std::string& code, const int& quantity, const std::string& super_user){ 
     code_ = code;

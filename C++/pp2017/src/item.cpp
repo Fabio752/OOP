@@ -4,11 +4,9 @@
 
 #include "../include/item.hpp"
 
-Item::~Item(){
-    std::cout <<"Item is leaving" <<std::endl;
-}
+Item::~Item(){}
 
-bool operator<(const Item& first_item, const Item& second_item){
+bool operator<(const Item first_item, const Item second_item){
     if(first_item.quantity_ < second_item.quantity_)
         return true;
     return false;

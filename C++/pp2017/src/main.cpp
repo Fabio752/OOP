@@ -10,6 +10,10 @@
 
 using namespace std;
 
+bool compare(Item* a, Item* b){
+    return (*a < *b);
+}
+
 int main(){
     list<Item*> unrestricted_item;
     list<Item*> restricted_item; 
@@ -41,23 +45,22 @@ int main(){
     ifstream inputfile2;
     inputfile2.open(file2.c_str());
     
-    // if inputfile is not valid
+    // if inputfile2 is not valid
     if(!inputfile2.is_open()){
         cout << "ERROR, FILE NOT FOUND" << std::endl;
         return 1;
     }
     
-    //if inputfile is valid
+    //if inputfile2 is valid
     else {
         string code, super_user;
         int quantity;
-        
-        while(inputfile >> code >> quantity >> super_user){
+        while(inputfile2 >> code >> quantity >> super_user){
             Item* re_item = new Restricted(code, quantity, super_user);
             restricted_item.push_back(re_item); 
         }
     }
-    
+     
     //display items
     cout <<"Unrestricted Items: \n";
     IterateList(unrestricted_item);
@@ -65,8 +68,8 @@ int main(){
     cout <<"Restricted Items: \n";
     IterateList(restricted_item);
     
-    sort(*unrestricted_item.begin(), *unrestricted_item.end());
-    sort(*restricted_item.begin(), *restricted_item.end());
+    unrestricted_item.sort(compare);
+    restricted_item.sort(compare);
 
     //display items
     cout <<"Unrestricted Items: \n";
@@ -75,7 +78,10 @@ int main(){
     cout <<"Restricted Items: \n";
     IterateList(restricted_item);
     
-    
+    if(*(*unrestricted_item.begin()) < *(*restricted_item.begin()))
+        cout << "smallest item in quantity: " <<*(*unrestricted_item.begin()) << endl;    
+    else    
+        cout << "smallest item in quantity: " <<*(*restricted_item.begin()) << endl;    
     
     //deleting
     typename list<Item*>::const_iterator it;

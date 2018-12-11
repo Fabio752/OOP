@@ -10,6 +10,7 @@ class Unrestricted: public Item {
     public:
         ~Unrestricted();
         Unrestricted(const std::string& code, const int& quantity); 
+
         void Print(std::ostream& os) const;
 };
 

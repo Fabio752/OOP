@@ -7,7 +7,7 @@
 #define ITEM_HPP
 
 class Item {
-    public:
+    protected:
          std::string code_;
          int quantity_;
 
@@ -15,7 +15,7 @@ class Item {
         virtual ~Item();
         virtual void Print(std::ostream& os) const;
         friend std::ostream& operator<<(std::ostream& os, const Item& item);
-        friend bool operator<(const Item& first_item, const Item& second_item);
+        friend bool operator<(const Item first_item, const Item second_item);
 
 };
 
